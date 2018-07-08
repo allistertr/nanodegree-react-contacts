@@ -6,7 +6,8 @@ import sortBy from 'sort-by';
 class ListContacts extends Component {
   static propTypes = {
     contacts: PropTypes.array.isRequired,
-    onDeleteContact: PropTypes.func.isRequired
+    onDeleteContact: PropTypes.func.isRequired,
+    onNavigate: PropTypes.func.isRequired,
   }
 
   state = {
@@ -45,6 +46,11 @@ class ListContacts extends Component {
             value={query}
             onChange={event => this.updateQuery(event.target.value)}
           />
+          <a
+            href="#create"
+            onClick={this.props.onNavigate}
+            className='add-contact'
+          >Add Contact</a>
         </div>
 
         {showingContacts.length !== contacts.length && (
